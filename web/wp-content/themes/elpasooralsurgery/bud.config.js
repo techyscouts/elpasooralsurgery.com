@@ -46,7 +46,7 @@ export default async (app) => {
      * URI of the `public` directory
      * @see {@link https://bud.js.org/docs/bud.setPublicPath/}
      */
-    .setPublicPath('/wp-content/themes/aoms/public/')
+    .setPublicPath('/wp-content/themes/elpasooralsurgery/public/')
 
     /**
      * Generate WordPress `theme.json`
