@@ -1,25 +1,32 @@
 {
   "name": "sage",
   "private": true,
+  "browserslist": [
+    "extends @roots/browserslist-config"
+  ],
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=16.0.0"
   },
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "translate": "npm run translate:pot && npm run translate:update",
-    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"theme.json,patterns,app,resources\"",
-    "translate:update": "for file in ./resources/lang/*.po; do wp i18n update-po ./resources/lang/sage.pot $file; done",
-    "translate:compile": "npm run translate:mo && npm run translate:js",
+    "dev": "bud dev",
+    "build": "bud build",
+    "translate": "yarn translate:pot && yarn translate:update",
+    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"app,resources\"",
+    "translate:update": "for filename in ./resources/lang/*.po; do msgmerge -U $filename ./resources/lang/sage.pot; done; rm -f ./resources/lang/*.po~",
+    "translate:compile": "yarn translate:mo && yarn translate:js",
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
   },
   "devDependencies": {
-    "@roots/vite-plugin": "^1.0.2",
-    "@tailwindcss/vite": "^4.0.9",
-    "laravel-vite-plugin": "^1.2.0",
-    "tailwindcss": "^4.0.9",
-    "vite": "^6.2.0"
+    "@roots/bud": "6.7.3",
+    "@roots/bud-tailwindcss": "6.7.3",
+    "@roots/sage": "6.7.3"
+  },
+  "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
+    "lity": "^2.4.1",
+    "lozad": "^1.16.0",
+    "swiper": "^11.1.4"
   }
 }

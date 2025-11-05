@@ -6,129 +6,127 @@
 
 namespace App;
 
-use Illuminate\Support\Facades\Vite;
+use function Roots\bundle;
 
 /**
- * Inject styles into the block editor.
- *
- * @return array
- */
-add_filter('block_editor_settings_all', function ($settings) {
-    $style = Vite::asset('resources/css/editor.css');
-
-    $settings['styles'][] = [
-        'css' => "@import url('{$style}')",
-    ];
-
-    return $settings;
-});
-
-/**
- * Inject scripts into the block editor.
+ * Register the theme assets.
  *
  * @return void
  */
-add_filter('admin_head', function () {
-    if (! get_current_screen()?->is_block_editor()) {
-        return;
-    }
-
-    $dependencies = json_decode(Vite::content('editor.deps.json'));
-
-    foreach ($dependencies as $dependency) {
-        if (! wp_script_is($dependency)) {
-            wp_enqueue_script($dependency);
-        }
-    }
-
-    echo Vite::withEntryPoints([
-        'resources/js/editor.js',
-    ])->toHtml();
-});
+add_action(
+    'wp_enqueue_scripts',
+    function () {
+        wp_enqueue_script('aoms-custom', get_template_directory_uri() . '/resources/scripts/custom.js?0.1', ['jquery'], null, true);
+        $script_data_array = [
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'template_url' => get_bloginfo('template_url'),
+        ];
+        wp_localize_script('aoms-custom', 'objectDataAjax', $script_data_array);
+        bundle('app')->enqueue();
+    },
+    100,
+);
 
 /**
- * Use the generated theme.json file.
+ * Register the theme assets with the block editor.
  *
- * @return string
+ * @return void
  */
-add_filter('theme_file_path', function ($path, $file) {
-    return $file === 'theme.json'
-        ? public_path('build/assets/theme.json')
-        : $path;
-}, 10, 2);
+add_action(
+    'enqueue_block_editor_assets',
+    function () {
+        bundle('editor')->enqueue();
+    },
+    100,
+);
 
 /**
  * Register the initial theme setup.
  *
  * @return void
  */
-add_action('after_setup_theme', function () {
-    /**
-     * Disable full-site editing support.
-     *
-     * @link https://wptavern.com/gutenberg-10-5-embeds-pdfs-adds-verse-block-color-options-and-introduces-new-patterns
-     */
-    remove_theme_support('block-templates');
+add_action(
+    'after_setup_theme',
+    function () {
+        /**
+         * Enable features from the Soil plugin if activated.
+         *
+         * @link https://roots.io/plugins/soil/
+         */
+        add_theme_support('soil', ['clean-up', 'nav-walker', 'nice-search', 'relative-urls']);
 
-    /**
-     * Register the navigation menus.
-     *
-     * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
-     */
-    register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage'),
-    ]);
+        /**
+         * Disable full-site editing support.
+         *
+         * @link https://wptavern.com/gutenberg-10-5-embeds-pdfs-adds-verse-block-color-options-and-introduces-new-patterns
+         */
+        remove_theme_support('block-templates');
 
-    /**
-     * Disable the default block patterns.
-     *
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-the-default-block-patterns
-     */
-    remove_theme_support('core-block-patterns');
+        /**
+         * Register the navigation menus.
+         *
+         * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
+         */
+        register_nav_menus([
+            'primary_navigation' => __('Primary Navigation', 'sage'),
+        ]);
+        register_nav_menus([
+            'side_bar_navigation_1' => __('Sidebar Navigation 1', 'sage'),
+        ]);
+        register_nav_menus([
+            'side_bar_navigation_2' => __('Sidebar Navigation 2', 'sage'),
+        ]);
+        register_nav_menus([
+            'side_bar_navigation_3' => __('Sidebar Navigation 3', 'sage'),
+        ]);
+        register_nav_menus([
+            'footer_navigation' => __('Footer Navigation', 'sage'),
+        ]);
 
-    /**
-     * Enable plugins to manage the document title.
-     *
-     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#title-tag
-     */
-    add_theme_support('title-tag');
+        /**
+         * Disable the default block patterns.
+         *
+         * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-the-default-block-patterns
+         */
+        remove_theme_support('core-block-patterns');
 
-    /**
-     * Enable post thumbnail support.
-     *
-     * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-     */
-    add_theme_support('post-thumbnails');
+        /**
+         * Enable plugins to manage the document title.
+         *
+         * @link https://developer.wordpress.org/reference/functions/add_theme_support/#title-tag
+         */
+        add_theme_support('title-tag');
 
-    /**
-     * Enable responsive embed support.
-     *
-     * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#responsive-embedded-content
-     */
-    add_theme_support('responsive-embeds');
+        /**
+         * Enable post thumbnail support.
+         *
+         * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+         */
+        add_theme_support('post-thumbnails');
 
-    /**
-     * Enable HTML5 markup support.
-     *
-     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
-     */
-    add_theme_support('html5', [
-        'caption',
-        'comment-form',
-        'comment-list',
-        'gallery',
-        'search-form',
-        'script',
-        'style',
-    ]);
+        /**
+         * Enable responsive embed support.
+         *
+         * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#responsive-embedded-content
+         */
+        add_theme_support('responsive-embeds');
 
-    /**
-     * Enable selective refresh for widgets in customizer.
-     *
-     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#customize-selective-refresh-widgets
-     */
-    add_theme_support('customize-selective-refresh-widgets');
-}, 20);
+        /**
+         * Enable HTML5 markup support.
+         *
+         * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
+         */
+        add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form', 'script', 'style']);
+
+        /**
+         * Enable selective refresh for widgets in customizer.
+         *
+         * @link https://developer.wordpress.org/reference/functions/add_theme_support/#customize-selective-refresh-widgets
+         */
+        add_theme_support('customize-selective-refresh-widgets');
+    },
+    20,
+);
 
 /**
  * Register the theme sidebars.
@@ -143,13 +141,17 @@ add_action('widgets_init', function () {
         'after_title' => '</h3>',
     ];
 
-    register_sidebar([
-        'name' => __('Primary', 'sage'),
-        'id' => 'sidebar-primary',
-    ] + $config);
+    register_sidebar(
+        [
+            'name' => __('Primary', 'sage'),
+            'id' => 'sidebar-primary',
+        ] + $config,
+    );
 
-    register_sidebar([
-        'name' => __('Footer', 'sage'),
-        'id' => 'sidebar-footer',
-    ] + $config);
+    register_sidebar(
+        [
+            'name' => __('Footer', 'sage'),
+            'id' => 'sidebar-footer',
+        ] + $config,
+    );
 });

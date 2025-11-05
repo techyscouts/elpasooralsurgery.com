@@ -16,9 +16,23 @@ class App extends Composer
     ];
 
     /**
-     * Retrieve the site name.
+     * Data to be passed to view before rendering.
+     *
+     * @return array
      */
-    public function siteName(): string
+    public function with()
+    {
+        return [
+            'siteName' => $this->siteName(),
+        ];
+    }
+
+    /**
+     * Returns the site name.
+     *
+     * @return string
+     */
+    public function siteName()
     {
         return get_bloginfo('name', 'display');
     }

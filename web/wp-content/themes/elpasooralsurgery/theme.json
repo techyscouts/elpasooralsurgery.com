@@ -1,14 +1,8 @@
 {
-  "__preprocessed__": "This file is used to build the theme.json file in the `public/build/assets` directory. The built artifact includes Tailwind's colors, fonts, and font sizes.",
+  "__generated__": "⚠️ This file is generated. Do not edit.",
   "$schema": "https://schemas.wp.org/trunk/theme.json",
-  "version": 3,
+  "version": 2,
   "settings": {
-    "layout": {
-      "contentSize": "48rem"
-    },
-    "background": {
-      "backgroundImage": true
-    },
     "color": {
       "custom": false,
       "customDuotone": false,
@@ -16,7 +10,114 @@
       "defaultDuotone": false,
       "defaultGradients": false,
       "defaultPalette": false,
-      "duotone": []
+      "duotone": [],
+      "palette": [
+        {
+          "name": "Transparent",
+          "slug": "transparent",
+          "color": "transparent"
+        },
+        {
+          "name": "White",
+          "slug": "white",
+          "color": "#ffffff"
+        },
+        {
+          "name": "Black",
+          "slug": "black",
+          "color": "#000000"
+        },
+        {
+          "name": "Fonts",
+          "slug": "fonts",
+          "color": "#002431"
+        },
+        {
+          "name": "Grey",
+          "slug": "grey",
+          "color": "#6d6e6f"
+        },
+        {
+          "name": "Grey2",
+          "slug": "grey2",
+          "color": "#d8d8d8"
+        },
+        {
+          "name": "LightGrey",
+          "slug": "lightgrey",
+          "color": "#e0e0e0"
+        },
+        {
+          "name": "LighterGrey",
+          "slug": "lightergrey",
+          "color": "#f8f8f8"
+        },
+        {
+          "name": "Blue_1",
+          "slug": "blue_1",
+          "color": "#1f559c"
+        },
+        {
+          "name": "Blue_3",
+          "slug": "blue_3",
+          "color": "#002e68"
+        },
+        {
+          "name": "Blue_4",
+          "slug": "blue_4",
+          "color": "#f3f9ff"
+        },
+        {
+          "name": "Blue_5",
+          "slug": "blue_5",
+          "color": "#37576b"
+        },
+        {
+          "name": "Blue_6",
+          "slug": "blue_6",
+          "color": "#00aeef"
+        },
+        {
+          "name": "Blue_7",
+          "slug": "blue_7",
+          "color": "#002431"
+        },
+        {
+          "name": "Blue_8",
+          "slug": "blue_8",
+          "color": "#0050bb"
+        },
+        {
+          "name": "Blue_9",
+          "slug": "blue_9",
+          "color": "#bed9eb"
+        },
+        {
+          "name": "Blue_10",
+          "slug": "blue_10",
+          "color": "#79a5c0"
+        },
+        {
+          "name": "Blue_11",
+          "slug": "blue_11",
+          "color": "#006baa"
+        },
+        {
+          "name": "Blue_12",
+          "slug": "blue_12",
+          "color": "#002d73"
+        },
+        {
+          "name": "Blue_13",
+          "slug": "blue_13",
+          "color": "#dce5e9"
+        },
+        {
+          "name": "Blue_14",
+          "slug": "blue_14",
+          "color": "#1e559a"
+        }
+      ]
     },
     "custom": {
       "spacing": {},
@@ -27,11 +128,121 @@
     },
     "spacing": {
       "padding": true,
-      "units": ["px", "%", "em", "rem", "vw", "vh"]
+      "units": [
+        "px",
+        "%",
+        "em",
+        "rem",
+        "vw",
+        "vh"
+      ]
     },
     "typography": {
-      "defaultFontSizes": false,
-      "customFontSize": false
+      "customFontSize": false,
+      "fontFamilies": [
+        {
+          "name": "\"Montserrat\"",
+          "slug": "Montserrat",
+          "fontFamily": "\"Montserrat\", sans-serif"
+        },
+        {
+          "name": "\"Roboto Slab\"",
+          "slug": "Roboto",
+          "fontFamily": "\"Roboto Slab\", serif"
+        }
+      ],
+      "fontSizes": [
+        {
+          "name": "12",
+          "slug": "12",
+          "size": "12px"
+        },
+        {
+          "name": "13",
+          "slug": "13",
+          "size": "13px"
+        },
+        {
+          "name": "14",
+          "slug": "14",
+          "size": "14px"
+        },
+        {
+          "name": "16",
+          "slug": "16",
+          "size": "16px"
+        },
+        {
+          "name": "17",
+          "slug": "17",
+          "size": "17px"
+        },
+        {
+          "name": "18",
+          "slug": "18",
+          "size": "18px"
+        },
+        {
+          "name": "20",
+          "slug": "20",
+          "size": "20px"
+        },
+        {
+          "name": "22",
+          "slug": "22",
+          "size": "22px"
+        },
+        {
+          "name": "24",
+          "slug": "24",
+          "size": "24px"
+        },
+        {
+          "name": "26",
+          "slug": "26",
+          "size": "26px"
+        },
+        {
+          "name": "28",
+          "slug": "28",
+          "size": "28px"
+        },
+        {
+          "name": "30",
+          "slug": "30",
+          "size": "30px"
+        },
+        {
+          "name": "32",
+          "slug": "32",
+          "size": "32px"
+        },
+        {
+          "name": "34",
+          "slug": "34",
+          "size": "34px"
+        },
+        {
+          "name": "40",
+          "slug": "40",
+          "size": "40px"
+        },
+        {
+          "name": "48",
+          "slug": "48",
+          "size": "48px"
+        },
+        {
+          "name": "56",
+          "slug": "56",
+          "size": "56px"
+        },
+        {
+          "name": "64",
+          "slug": "64",
+          "size": "64px"
+        }
+      ]
     }
   }
 }
