@@ -48,7 +48,7 @@ export default async (app) => {
      */
    // .setPublicPath('/app/themes/sage/public/')
     //.setPublicPath('/ts/elpasooralsurgery.com/web/wp-content/themes/elpasooralsurgery-5/public/')
-    .setPublicPath('/wp-content/themes/elpasooralsurgery-5/public/')
+    .setPublicPath('/wp-content/themes/elpasooralsurgery/public/')
     /**
      * Generate WordPress `theme.json`
      *
