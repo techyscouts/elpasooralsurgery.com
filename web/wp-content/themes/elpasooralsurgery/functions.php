@@ -77,6 +77,18 @@ add_theme_support('sage');
 //     ]);
 // }
 
+add_action('acf/init', function() {
+  if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+        'page_title'    => 'Theme Options',
+        'menu_title'    => 'Theme Options', 
+        'capability'    => 'edit_posts',
+        'redirect'      => false
+    ));
+  }
+});
+
 /*** Admin Login ***/
 function login_logo()
 {
