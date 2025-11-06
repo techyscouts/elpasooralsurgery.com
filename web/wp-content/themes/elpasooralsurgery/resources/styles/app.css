@@ -545,7 +545,7 @@
     @apply items-center;
   }
   .announcement-bar p {
-    @apply text-Fonts font-400 text-12 leading-22 lg:font-700 lg:text-14 lg:leading-24 text-Grey;
+    @apply  font-400 text-12 leading-22 lg:font-700 lg:text-14 lg:leading-24 text-White;
   }
 
   .announcement ul li {
