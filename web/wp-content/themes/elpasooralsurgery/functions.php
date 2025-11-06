@@ -11,11 +11,12 @@
 |
 */
 
-if (!file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) {
     wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'sage'));
 }
 
 require $composer;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,12 +31,16 @@ require $composer;
 */
 
 try {
-    \Roots\bootloader();
+    \Roots\bootloader()->boot();
 } catch (Throwable $e) {
-    wp_die(__('You need to install Acorn to use this theme.', 'sage'), '', [
-        'link_url' => 'https://docs.roots.io/acorn/2.x/installation/',
-        'link_text' => __('Acorn Docs: Installation', 'sage'),
-    ]);
+    wp_die(
+        __('You need to install Acorn to use this theme.', 'sage'),
+        '',
+        [
+            'link_url' => 'https://roots.io/acorn/docs/installation/',
+            'link_text' => __('Acorn Docs: Installation', 'sage'),
+        ]
+    );
 }
 
 /*
@@ -50,36 +55,27 @@ try {
 |
 */
 
-collect(['setup', 'filters'])->each(function ($file) {
-    if (!locate_template($file = "app/{$file}.php", true, true)) {
-        wp_die(
-            /* translators: %s is replaced with the relative file path */
-            sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file),
-        );
-    }
-});
+collect(['setup', 'filters'])
+    ->each(function ($file) {
+        if (! locate_template($file = "app/{$file}.php", true, true)) {
+            wp_die(
+                /* translators: %s is replaced with the relative file path */
+                sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
+            );
+        }
+    });
 
-/*
-|--------------------------------------------------------------------------
-| Enable Sage Theme Support
-|--------------------------------------------------------------------------
-|
-| Once our theme files are registered and available for use, we are almost
-| ready to boot our application. But first, we need to signal to Acorn
-| that we will need to initialize the necessary service providers built in
-| for Sage when booting.
-|
-*/
+
 
 add_theme_support('sage');
 
-if (function_exists('acf_add_options_page')) {
-    acf_add_options_page([
-        'page_title' => __('Theme Options', 'sage'),
-        'capability' => 'manage_options',
-        'position' => '81',
-    ]);
-}
+// if (function_exists('acf_add_options_page')) {
+//     acf_add_options_page([
+//         'page_title' => __('Theme Options', 'sage'),
+//         'capability' => 'manage_options',
+//         'position' => '81',
+//     ]);
+// }
 
 /*** Admin Login ***/
 function login_logo()
@@ -676,6 +672,7 @@ function custom_language_switcher()
         }
     }
 }
+
 add_shortcode('custom_language_switcher', 'custom_language_switcher');
 
 function my_theme_language_body_class($classes)
@@ -689,4 +686,4 @@ function my_theme_language_body_class($classes)
     return $classes;
 }
 
-add_filter('body_class', 'my_theme_language_body_class');
+//add_filter('body_class', 'my_theme_language_body_class');

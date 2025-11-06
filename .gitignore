@@ -1,5 +1,47 @@
 /web/wp-content/plugins
-/web/wp-content/uploads
+/web/wp-content/mu-plugins 
 /web/wp-content/cache
 /web/wp-includes
-/web/wp-admin
+/web/wp-admin 
+/web/wp-content/index.php
+/web/wp-content/plugins/index.php
+/web/wp-content/themes/index.php
+/web/wp-*.php
+
+# Configuration
+wp-config.php
+.htaccess
+
+# Uploads
+#/web/wp-content/up*/
+
+# Include 2025 and ignore uploads folder
+/web/wp-content/uploads 
+/web/wp-content/uploads/2025
+
+# Log files
+*.log
+
+/web/db/
+
+.idea/
+.vscode/
+.DS_Store
+node_modules/
+yarn.lock
+package-lock.json
+vite.config.js
+/web/wp-content/themes/*/public/ 
+ 
+web/xmlrpc.php
+web/index.php
+web/license.txt
+web/readme.html
+#/web/wp-content/themes/elpasooralsurgery/vite.config.js  
+/web/wp-content/themes/elpasooralsurgery-11
+/web/wp-content/themes/elpasooralsurgery-bakup
+/web/wp-content/uploads/wp-migrate-db
+web/wp-content/themes/elpasooralsurgery.zip
+web/wp-content/themes/elpasooralsurgery-new.zip
+web/wp-content/themes/elpasooralsurgery-5.zip
+web/wp-content/themes/elpasooralsurgery-5-start.zip

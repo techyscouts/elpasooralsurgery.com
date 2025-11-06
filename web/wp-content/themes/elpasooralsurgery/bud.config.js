@@ -34,20 +34,21 @@ export default async (app) => {
      * Proxy origin (`WP_HOME`)
      * @see {@link https://bud.js.org/docs/bud.proxy/}
      */
-    // .proxy('http://example.test')
+    .proxy('http://example.test')
 
     /**
      * Development origin
      * @see {@link https://bud.js.org/docs/bud.serve/}
      */
-    // .serve('http://0.0.0.0:3000')
+    .serve('http://0.0.0.0:3000')
 
     /**
      * URI of the `public` directory
      * @see {@link https://bud.js.org/docs/bud.setPublicPath/}
      */
-    .setPublicPath('/wp-content/themes/elpasooralsurgery/public/')
-
+   // .setPublicPath('/app/themes/sage/public/')
+    //.setPublicPath('/ts/elpasooralsurgery.com/web/wp-content/themes/elpasooralsurgery-5/public/')
+    .setPublicPath('/wp-content/themes/elpasooralsurgery-5/public/')
     /**
      * Generate WordPress `theme.json`
      *
