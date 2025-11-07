@@ -28,16 +28,12 @@ wp-config.php
 .vscode/
 .DS_Store
 node_modules/
-yarn.lock
-package-lock.json
-vite.config.js
 /web/wp-content/themes/*/public/ 
  
 web/xmlrpc.php
 web/index.php
 web/license.txt
 web/readme.html
-#/web/wp-content/themes/elpasooralsurgery/vite.config.js  
 /web/wp-content/themes/elpasooralsurgery-11
 /web/wp-content/themes/elpasooralsurgery-bakup
 /web/wp-content/uploads/wp-migrate-db
