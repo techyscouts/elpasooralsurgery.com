@@ -102,7 +102,7 @@ function login_logo()
         .privacy-policy-page-link a{color:#6D6E6F;}
         h1 a{background-image: url(' .
         get_bloginfo('template_directory') .
-        '/resources/images/logo.png) !important;background-size: 95% !important; width:80% !important;margin: 0 auto !important; box-shadow: none !important; height: 140px !important; margin: 20px auto !important; box-shadow: none !important;height: 98px !important; background-size: contain !important;}
+        '/resources/images/El_paso.webp) !important;background-size: 95% !important; width:80% !important;margin: 0 auto !important; box-shadow: none !important; height: 140px !important; margin: 20px auto !important; box-shadow: none !important;height: 98px !important; background-size: contain !important;}
         #nav a{color:#3c434a !important;}
         #backtoblog a{color:#3c434a !important;}
         .wp-core-ui .button-primary {
